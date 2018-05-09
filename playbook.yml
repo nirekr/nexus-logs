@@ -2,7 +2,7 @@
   hosts: nexus_switch
   gather_facts: no
   vars:
-   backup_root: /etc/ansible/net_device_backups
+   backup_root: /etc/ansible/device_logs
    creds:
      host: "{{ host }}"
      username: "{{ un }}"
