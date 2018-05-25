@@ -2,7 +2,7 @@
   hosts: nexus_switch
   gather_facts: no
   vars:
-   backup_root: /etc/ansible/device_logs
+   backup_root: /etc/ansible/net_device_backups
    creds:
      host: "{{ host }}"
      username: "{{ un }}"
@@ -14,7 +14,7 @@
         provider: "{{ creds }}"
         commands: show running-config
     register: show_run
-  - name: get log info
+  - name: get logs
     nxos_command:
      provider: "{{ creds }}"
      commands:
@@ -38,4 +38,3 @@
   - copy:
           content: "{{ nxos_logs.stdout[0] }}"
           dest: "{{ backup_root }}/{{ inventory_hostname }}/nxos-logs"
-
